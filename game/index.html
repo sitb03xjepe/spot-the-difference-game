@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot the Difference — six worlds, forty-two differences</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="hud">
+  <div class="hud-left">
+    <div class="hud-title" id="hud-title">Spot the Difference</div>
+    <div class="hud-tagline" id="hud-tagline">Two pictures. Seven differences. One sharp eye.</div>
+  </div>
+  <div class="hud-mid">
+    <div class="hud-level" id="hud-level">Level 1 of 6</div>
+    <div class="hud-counter" id="hud-counter">0 / 7 found</div>
+    <div class="hud-dots" id="hud-dots" aria-label="differences found"></div>
+  </div>
+  <div class="hud-right">
+    <div class="hud-timer-wrap">
+      <div class="hud-timer" id="hud-timer">2:00</div>
+      <div class="timer-track"><div class="timer-bar" id="hud-timer-bar"></div></div>
+    </div>
+    <div class="hud-score" id="hud-score">Score 0</div>
+    <div class="hud-combo" id="hud-combo"></div>
+    <button id="btn-hint" type="button">Hint (3)</button>
+    <button id="btn-mute" type="button">Sound: on</button>
+  </div>
+</header>
+<main class="stage">
+  <canvas id="game" aria-label="Spot the difference: two side-by-side pictures. Click a difference on either picture to mark it."></canvas>
+  <div class="overlay hidden" id="overlay">
+    <div class="card" id="overlay-body"></div>
+  </div>
+</main>
+<footer class="foot">
+  <span>Click a difference on either picture · <kbd>H</kbd> hint · <kbd>M</kbd> sound · <kbd>Esc</kbd> levels</span>
+  <span>Spot the Difference — an original game, drawn in code</span>
+</footer>
+<p id="status" class="sr-only" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

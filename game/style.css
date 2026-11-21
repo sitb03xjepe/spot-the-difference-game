@@ -1,0 +1,163 @@
+/* Spot the Difference — interface styling. System fonts only, no webfonts,
+   so the game renders identically with no network request. */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: #0f172a;
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 16px 16px;
+  gap: 10px;
+}
+
+.hud {
+  width: min(1280px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 10px 16px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 14px;
+}
+
+.hud-title { font-size: 19px; font-weight: 800; letter-spacing: 0.2px; }
+.hud-tagline { font-size: 13px; color: #94a3b8; margin-top: 2px; }
+.hud-mid { text-align: center; }
+.hud-level { font-size: 13px; color: #94a3b8; }
+.hud-counter { font-size: 22px; font-weight: 800; color: #fde047; }
+.hud-dots { display: flex; gap: 5px; justify-content: center; margin-top: 4px; }
+.dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: #334155; border: 1px solid #64748b;
+}
+.dot.on { background: #22c55e; border-color: #4ade80; }
+
+.hud-right { display: flex; align-items: center; gap: 12px; }
+.hud-timer-wrap { text-align: right; }
+.hud-timer { font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.hud-timer.low { color: #f87171; }
+.timer-track { width: 110px; height: 6px; background: #334155; border-radius: 3px; overflow: hidden; }
+.timer-bar { height: 100%; width: 100%; background: #38bdf8; border-radius: 3px; transition: width 0.3s linear; }
+.timer-bar.low { background: #ef4444; }
+.hud-score { font-size: 17px; font-weight: 700; }
+.hud-combo { font-size: 14px; font-weight: 800; color: #fb923c; min-width: 64px; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-weight: 700;
+  background: #f59e0b;
+  color: #451a03;
+}
+button:hover { filter: brightness(1.08); }
+button:disabled { opacity: 0.45; cursor: default; }
+button.ghost { background: transparent; color: #e2e8f0; border: 1px solid #64748b; }
+button.primary { background: #22c55e; color: #052e16; font-size: 17px; padding: 13px 22px; }
+
+.stage {
+  position: relative;
+  width: min(1280px, 100%);
+}
+
+#game {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 23, 0.72);
+  border-radius: 14px;
+  padding: 20px;
+  overflow: auto;
+}
+.overlay.hidden { display: none; }
+
+.card {
+  width: min(620px, 94%);
+  max-height: 100%;
+  overflow: auto;
+  background: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 18px;
+  padding: 28px 30px;
+  text-align: center;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.card h1 { font-size: 44px; line-height: 1.05; margin: 6px 0 12px; }
+.card h2 { font-size: 30px; margin: 6px 0 10px; }
+.eyebrow { color: #fbbf24; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; font-size: 12px; margin: 0; }
+.lede { color: #cbd5e1; font-size: 16px; line-height: 1.55; }
+.howto { color: #cbd5e1; font-size: 14px; line-height: 1.6; text-align: left; background: #0f172a; border-radius: 10px; padding: 12px 14px; }
+.howto kbd, .foot kbd {
+  background: #334155; border: 1px solid #64748b; border-bottom-width: 2px;
+  border-radius: 5px; padding: 1px 6px; font: inherit; font-size: 12px;
+}
+.card .primary, .card .ghost { margin: 8px 4px 0; }
+.stars { font-size: 34px; color: #facc15; letter-spacing: 4px; margin: 4px 0; }
+.best { color: #94a3b8; font-size: 15px; }
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+.level-card {
+  background: #0f172a;
+  border: 1px solid #475569;
+  color: #f8fafc;
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.level-card:hover { border-color: #f59e0b; }
+.lvl-num { font-size: 11px; color: #fbbf24; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.lvl-name { font-size: 16px; font-weight: 800; }
+.lvl-tag { font-size: 12px; color: #94a3b8; line-height: 1.35; }
+.lvl-meta { font-size: 12px; color: #facc15; margin-top: 3px; }
+
+.foot {
+  width: min(1280px, 100%);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .hud { flex-wrap: wrap; }
+  .hud-mid { order: 3; width: 100%; }
+  .level-grid { grid-template-columns: 1fr; }
+  .card h1 { font-size: 32px; }
+}
